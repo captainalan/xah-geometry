@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+    <title>Polyhedra in Vanilla JavaScript</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+	<div class="col-md-12 mb-3">
+	  <h1>Polyhedra in Plain JavaScript and HTML</h1>
+	</div>
+      </div>
+      <div class="row">
+	<div class="col-md-4" id="sidebar">
+	  <p>From Wikipedia (Nov. 14, 2019):</b>
+	  <blockquote class="blockquote">
+In geometry, a <b>polyhedron</b> (plural <b>polyhedra</b> or <b>polyhedrons</b>) is a solid in three dimensions with flat polygonal faces, straight edges and sharp corners or vertices. The word polyhedron comes from the Classical Greek πολύεδρον, as <i>poly-</i> (stem of πολύς, "many") + <i>-hedron</i> (form of ἕδρα, "base" or "seat").
+	    </blockquote>
+
+
+	  <hr>
+	  <p>See the original code by viewing the source at
+	    <a href="http://xahlee.info/xahdraw/test2018-02-07/polyhedron_rotate.html">xahlee.info</a>.
+	  </p>
+	  <p>
+	    Return to this
+	    site's <a href="http://github.com/captainalan/xah-geometry">Github
+	    repository</a>.
+	  </p>
+
+	</div>
+	<div class="col-md-8">
+	  <p>Select a polyhedron:</p>
+	  <select id="polyhedronMenu" size="1">
+	    <option value="icosahedron" selected>icosahedron</option>
+	    <option value="octahedron">octahedron</option>
+	    <option value="cube">cube</option>
+	    <option value="tetrahedron">tetrahedron</option>
+	  </select>
+
+	  <div id="svgArea"></div>
+	  <p>Use the arrow keys to rotate the polyhedron.</p>
+	</div>
+      </div>
+    </div>
+    
+
+
+
+<script defer src="polyhedron_rotate.js"></script>
+
+    <!-- Optional JavaScript --> <!-- jQuery first, then Popper.js,
+    then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+  </body>
+</html>
