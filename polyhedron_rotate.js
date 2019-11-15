@@ -236,13 +236,34 @@ init();
 
     // Listen for mouse events
     // TODO Finish implementing this
+    let mousedown_x, mousedown_y; // Set on mouse down event
     svgEl.addEventListener("mousedown", (event) => { // Assumes svgEl declared...
 	console.log("mouse down event", event);
-
+	mousedown_x = event.clientX;
+	mousedown_y = event.clientY;
 	// TODO Fetch meaningful values from mouse down event
-	rotX(5); // Assume this function is accessible...
-	rotZ(5); // Assume this function is accessible...
-	render();
+    });
+    // Works in conjunction with `mousedown` event listener above
+    svgEl.addEventListener("mouseup", (event) => { // Assumes svgEl declared...
+	let mouseup_x, mouseup_y; // Set on mouse down event
+	console.log("mouse down event", event);
+	if (mousedown_x && mousedown_y) {
+	    mouseup_x = event.clientX;
+	    mouseup_y = event.clientY;
+
+	    /* Debugging
+	    console.log(`mousedown_x: ${mousedown_x}\n`);
+	    console.log(`mousedown_y: ${mousedown_y}\n`);
+	    console.log(`mouseup_x: ${mouseup_x}\n`);
+	    console.log(`mouseup_y: ${mouseup_y}\n`);
+	    */
+
+	    rotX(mousedown_x - mouseup_x); // Assume this function is accessible...
+	    rotZ(-1 * (mousedown_y - mouseup_y)); // Assume this function is accessible...
+	    render();
+	} else {
+	    console.log("You didn't click before mousing up!!");
+	}
     });
 
     // when user select a object in menu, draw it
