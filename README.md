@@ -4,7 +4,7 @@ This repository contains vanilla JavaScript used to make geometric
 solids. Give [Xah Lee](http://xahlee.info/) money if you find this
 content/code useful.
 
-See it online on [Github Pages](captainalan.github.io/xah-geometry).
+See it online on [Github Pages](http://captainalan.github.io/xah-geometry).
 
 This site makes use of the [Bootstrap starter
 template](https://getbootstrap.com/docs/4.3/getting-started/introduction/)
