@@ -10,6 +10,16 @@ This site makes use of the [Bootstrap starter
 template](https://getbootstrap.com/docs/4.3/getting-started/introduction/)
 (4.3) in addition to plain HTML/CSS/JavaScript.
 
+## Programming
+
+### Challenge: Add mouse-based rotation to polyhedra
+Starter code lets you rotate based on key presses. Implement mouse-based rotation
+
+## Math
+
+### Platonic Solids
+
+
 ## Notes from Master Xah
 
 Editorial note: questions are paraphrased; taken from a conversation

@@ -17,6 +17,9 @@ svgArea.appendChild(svgEl);
 // rotationKeyIncrement is the degree for each key press
 const rotationKeyIncrement = 5;
 
+// rotationMouseIncrement is the degree for mouse dragging
+const rotationMouseIncrement = 5;
+
 // a nested array of 3d coordinates.
 let vertices;
 
@@ -30,7 +33,15 @@ const initVertices = ((polyhedronName) => {
     const vo = 15;
     const gg = vo*(Math.sqrt(5)-1)/2;
 
-    // polyData is polyhedron's vertices data. It has the form { tetrahedron: data , cube: data, octahedron: data}, each data has the form {vertices:..., faces:...}
+    // polyData is polyhedron's vertices data.
+    // It has the form
+    // {
+    //   tetrahedron: data,
+    //   cube: data,
+    //   octahedron: data
+    // },
+    // each data has the form {vertices:..., faces:...}
+
     const polyData = {
         "tetrahedron": {
             "vertices": [
@@ -128,15 +139,15 @@ const initVertices = ((polyhedronName) => {
 const getFace = ((j) => faceIndexes[j] . map ((x) => vertices[x]) );
 
 // rotate data around Z axis
-const rotZ = ((deg) => {
+const rotZ = (deg) => {
     const cd = Math.cos(Math.PI/180 * deg);
     const sd = Math.sin(Math.PI/180 * deg);
-    vertices = vertices . map ( ([x,y,z]) => [
+    vertices = vertices . map (([x,y,z]) => [
         cd * x - sd  * y ,
         sd * x + cd  * y ,
-        z] );
-}
-             );
+        z,
+    ]);
+};
 
 // rotate data around X axis
 const rotX = ((deg) => {
@@ -145,17 +156,16 @@ const rotX = ((deg) => {
     vertices = vertices . map ( ([x,y,z]) => [
         x,
         cd * y - sd  * z ,
-        sd * y + cd  * z ] );
-}
-             );
+        sd * y + cd  * z,
+    ]);
+});
 
 const scaleX = ((sc) => {
     vertices = vertices . map ( ([x,y,z]) => [
         sc * x,
         sc * y,
-        sd * z ] );
-}
-               );
+        sd * z ] ); // TODO where does `sd` come from? Remove if unused.
+});
 
 // zProj([x,y,z]) parallel projects a 3d point into 2d, by just dropping z. return [x,y]
 const zProj = (([x,y,z]) => [x,y]);
@@ -185,14 +195,20 @@ const createSvgFace = ((j) => {
 // });
 
 const doKeyPress = ((key) => {
-    // up arrow
-    if (key.keyCode === 38) { rotX(rotationKeyIncrement)};
-    // down arrow
-    if (key.keyCode === 40) { rotX(-rotationKeyIncrement)};
-    // right arrow
-    if (key.keyCode === 39) { rotZ(rotationKeyIncrement)};
-    // left arrow
-    if (key.keyCode === 37) { rotZ(-rotationKeyIncrement)};
+    switch(key.keyCode) {
+    case 38: // up arrow;
+	rotX(rotationKeyIncrement);
+	break;
+    case 40: // down arrow;
+	rotX(-rotationKeyIncrement);
+	break;
+    case 39: // right arrow
+	rotZ(rotationKeyIncrement);
+	break;
+    case 37: // left arrow
+	rotZ(-rotationKeyIncrement);
+	break;
+    }
 });
 
 const render = () => {
@@ -209,13 +225,40 @@ const init = (() => {
 
 init();
 
-{
+(function () { // "Main Game Loop" Function
+
     // setup events and handler
 
     // make arrow keys to rotate the object
-    document . body. addEventListener("keydown", ((keyPressed) => { doKeyPress(keyPressed); render(); }));
+    document.body.addEventListener("keydown", (keyPressed) => {
+	doKeyPress(keyPressed); render();
+    });
+
+    // Listen for mouse events
+    // TODO Finish implementing this
+    svgEl.addEventListener("mousedown", (event) => { // Assumes svgEl declared...
+	console.log("mouse down event", event);
+
+	// TODO Fetch meaningful values from mouse down event
+	rotX(5); // Assume this function is accessible...
+	rotZ(5); // Assume this function is accessible...
+	render();
+    });
 
     // when user select a object in menu, draw it
-    polyhedronMenu. addEventListener("change", (() => {initVertices(polyhedronMenu.value); rotZ(20); rotX(10); render(); polyhedronMenu.blur();}));
-    polyhedronMenu. addEventListener("input", (() => {initVertices(polyhedronMenu.value); rotZ(20); rotX(10); render(); polyhedronMenu.blur(); }));
-}
+    polyhedronMenu.addEventListener("change", () => {
+	initVertices(polyhedronMenu.value);
+	rotZ(20);
+	rotX(10);
+	render();
+	polyhedronMenu.blur();
+    });
+
+    polyhedronMenu.addEventListener("input", () => {
+	initVertices(polyhedronMenu.value);
+	rotZ(20);
+	rotX(10);
+	render();
+	polyhedronMenu.blur();
+    });
+})();
