@@ -16,8 +16,6 @@ template](https://getbootstrap.com/docs/4.3/getting-started/introduction/)
 
 Starter code lets you rotate based on key presses. Implement mouse-based rotation.
 
-- [ ] Variable to track if mouse is pressed.
-
 ## Math
 
 ### Platonic Solids
