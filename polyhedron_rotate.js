@@ -236,34 +236,28 @@ init();
 
     // Listen for mouse events
     // TODO Finish implementing this
-    let mousedown_x, mousedown_y; // Set on mouse down event
+    let mousedown = false; // Initialize as false (assume mouse isn't being clicked)
+    let x, y;
     svgEl.addEventListener("mousedown", (event) => { // Assumes svgEl declared...
-	console.log("mouse down event", event);
-	mousedown_x = event.clientX;
-	mousedown_y = event.clientY;
-	// TODO Fetch meaningful values from mouse down event
+	mousedown = true;
+	x = event.clientX;
+	y = event.clientY;
     });
     // Works in conjunction with `mousedown` event listener above
     svgEl.addEventListener("mouseup", (event) => { // Assumes svgEl declared...
-	let mouseup_x, mouseup_y; // Set on mouse down event
-	console.log("mouse down event", event);
-	if (mousedown_x && mousedown_y) {
-	    mouseup_x = event.clientX;
-	    mouseup_y = event.clientY;
-
-	    /* Debugging
-	    console.log(`mousedown_x: ${mousedown_x}\n`);
-	    console.log(`mousedown_y: ${mousedown_y}\n`);
-	    console.log(`mouseup_x: ${mouseup_x}\n`);
-	    console.log(`mouseup_y: ${mouseup_y}\n`);
-	    */
-
-	    rotX(mousedown_x - mouseup_x); // Assume this function is accessible...
-	    rotZ(-1 * (mousedown_y - mouseup_y)); // Assume this function is accessible...
+	mousedown = false;
+	render();
+    });
+    svgEl.addEventListener("mousemove", (event) => { // Assumes svgEl declared...
+	if (mousedown) {
+	    const SCALING_FACTOR = 0.1; // scale rotation so it isn't spazzy...
+	    rotX((event.clientX - x) * SCALING_FACTOR); // Assume this function is accessible...
+	    rotZ((event.clientY - y) * SCALING_FACTOR); // Assume this function is accessible...
 	    render();
-	} else {
-	    console.log("You didn't click before mousing up!!");
 	}
+
+	// rotX(mousedown_x - mouseup_x); // Assume this function is accessible...
+	// rotZ(-1 * (mousedown_y - mouseup_y)); // Assume this function is accessible...
     });
 
     // when user select a object in menu, draw it
