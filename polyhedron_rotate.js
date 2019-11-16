@@ -234,8 +234,7 @@ init();
 	doKeyPress(keyPressed); render();
     });
 
-    // Listen for mouse events
-    // TODO Finish implementing this
+    // Rotate polyhedron with mouse
     let mousedown = false; // Initialize as false (assume mouse isn't being clicked)
     let x, y;
     svgEl.addEventListener("mousedown", (event) => { // Assumes svgEl declared...
@@ -253,11 +252,9 @@ init();
 	    const SCALING_FACTOR = 0.1; // scale rotation so it isn't spazzy...
 	    rotX((event.clientX - x) * SCALING_FACTOR); // Assume this function is accessible...
 	    rotZ((event.clientY - y) * SCALING_FACTOR); // Assume this function is accessible...
+	    // TODO make mouse manipulation more intuitive 
 	    render();
 	}
-
-	// rotX(mousedown_x - mouseup_x); // Assume this function is accessible...
-	// rotZ(-1 * (mousedown_y - mouseup_y)); // Assume this function is accessible...
     });
 
     // when user select a object in menu, draw it
