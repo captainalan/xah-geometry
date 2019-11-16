@@ -12,11 +12,13 @@ template](https://getbootstrap.com/docs/4.3/getting-started/introduction/)
 
 ## Programming
 
+### Challenge (ongoing): Implement in three.js
+
+See current work in progress at [Github Pages](http://captainalan.github.io/xah-geometry/threejs.html).
+
 ### Challenge: Add mouse-based rotation to polyhedra
 
 Starter code lets you rotate based on key presses. Implement mouse-based rotation.
-
-- [ ] Variable to track if mouse is pressed.
 
 ## Math
 
