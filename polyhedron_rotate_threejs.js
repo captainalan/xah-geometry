@@ -18,9 +18,18 @@ renderer.setSize( RENDERER_WIDTH, RENDERER_HEIGHT);
 RENDER_CONTAINER.appendChild( renderer.domElement );
 
 const geometry = new THREE.BoxGeometry( 1, 1, 1 );
-const material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
+const material = new THREE.MeshPhongMaterial( { color: 0x44aa88 } );
 const cube = new THREE.Mesh( geometry, material );
-scene.add( cube );
+scene.add(cube);
+
+// TODO Add logic to swap out different shapes
+
+const color = 0xFFFFFF;
+const intensity = 1;
+const light = new THREE.DirectionalLight(color, intensity);
+light.position.set(-1, 2, 4);
+scene.add(light);
+
 
 camera.position.z = 5;
 
@@ -34,3 +43,9 @@ const animate = () => {
 };
 
 animate();
+
+/*
+  TODO add controls
+  TODO add lighting
+
+*/

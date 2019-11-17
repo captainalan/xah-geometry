@@ -16,6 +16,13 @@ template](https://getbootstrap.com/docs/4.3/getting-started/introduction/)
 
 See current work in progress at [Github Pages](http://captainalan.github.io/xah-geometry/threejs.html).
 
+Useful resources:
+
+- https://threejsfundamentals.org/
+
+Future directions: making models and scenes in Blender, exporting for
+the web
+
 ### Challenge: Add mouse-based rotation to polyhedra
 
 Starter code lets you rotate based on key presses. Implement mouse-based rotation.
